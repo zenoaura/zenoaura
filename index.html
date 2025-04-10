@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenoAura - Premium Vitamins & Cosmetics</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f8f9fa;
+            --accent-color: #28a745;
+            --text-color: #333;
+            --light-gray: #e9ecef;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            color: var(--text-color);
+            background-color: white;
+        }
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        .hero {
+            background-color: var(--secondary-color);
+            padding: 60px 0;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: white;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #3a7bc8;
+        }
+        .products {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            background-color: white;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-images {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .image-container {
+            text-align: center;
+            flex: 1;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .image-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-top: 5px;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .product-description {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+        .product-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .product-action {
+            display: flex;
+            justify-content: space-between;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: var(--light-gray);
+            margin: 0 5px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        .tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        footer {
+            background-color: var(--secondary-color);
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            padding-right: 20px;
+        }
+        .footer-section h3 {
+            margin-bottom: 15px;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        .social-icons a:hover {
+            background-color: #3a7bc8;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        .language-switcher button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            margin: 0 5px;
+            font-weight: 500;
+        }
+        .language-switcher button.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        /* RTL Support */
+        [dir="rtl"] nav ul li {
+            margin-right: 20px;
+            margin-left: 0;
+        }
+        [dir="rtl"] .footer-section {
+            padding-left: 20px;
+            padding-right: 0;
+        }
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .lightbox span {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <div class="logo">ZenoAura</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="nav-link translate" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="#products" class="nav-link translate" data-en="Products" data-ar="المنتجات">Products</a></li>
+                        <li><a href="#about" class="nav-link translate" data-en="About Us" data-ar="من نحن">About Us</a></li>
+                        <li><a href="#contact" class="nav-link translate" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="language-switcher">
+                    <button onclick="changeLanguage('en')" class="active">EN</button>
+                    <button onclick="changeLanguage('ar')">عربي</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="hero" id="home" style="background-image: url('images/product1.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="translate" data-en="Premium Vitamins & Cosmetics" data-ar="فيتامينات ومستحضرات تجميل مميزة">Premium Vitamins & Cosmetics</h1>
+            <p class="translate" data-en="Discover our natural, high-quality products for your health and beauty needs. Made with the finest ingredients for optimal results." data-ar="اكتشف منتجاتنا الطبيعية عالية الجودة لاحتياجات الصحة والجمال. مصنوعة من أفضل المكونات للحصول على نتائج مثالية.">Discover our natural, high-quality products for your health and beauty needs. Made with the finest ingredients for optimal results.</p>
+            <a href="#products" class="btn translate" data-en="Shop Now" data-ar="تسوق الآن">Shop Now</a>
+        </div>
+    </section>
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title translate" data-en="Our Products" data-ar="منتجاتنا">Our Products</h2>
+            <div class="tabs">
+                <button class="tab active translate" data-en="All Products" data-ar="كل المنتجات" onclick="filterProducts('all')">All Products</button>
+                <button class="tab translate" data-en="Vitamins" data-ar="فيتامينات" onclick="filterProducts('vitamins')">Vitamins</button>
+                <button class="tab translate" data-en="Cosmetics" data-ar="مستحضرات تجميل" onclick="filterProducts('cosmetics')">Cosmetics</button>
+            </div>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="vitamins" data-available="true">
+                    <div class="product-details">
+                        <div class="product-images">
+                            <div class="image-container">
+                                <img src="https://media-hosting.imagekit.io/e154e2dbd6e84f29/Screenshot%202025-04-10%20093724.png?Expires=1838899403&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=rMdgidImYfT4OnSwADMeZclyu8csAzNubl1K1FUDU~RmQpOc4MVtO0f9L59WxZrLwK6A6RoRRypGkd71fybg7Okbc47Laa1hEVDZ5zbG~ZvYGA24hMm4oxZ~3guwIeA1~zhQ1VYeQxR5MzQj~NXemENei60Pixx~SJy0H3RrqWMc~bZvagI0TuXJjqDf905zoStpEmnQg65yqGvkYg49AHwQ2pyOa10ir58nrIrzQ~79HOx-BJT5tWTDjbpN1z45w2DSEsJTQWHs1caTWj~pTjikNZU5oYoj1Jo9hU2lZ9e0TOP5uWQnLD128vfeXmRjuiCKUDeC5VXyz0FT9RaESw__" alt="Front Image" class="product-image front-image">
+                                
+                            </div>
+                            <div class="image-container">
+                                <img src="https://media-hosting.imagekit.io/dfacc8e5f47d476f/Screenshot%202025-04-10%20181322.png?Expires=1838906032&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TySgXRetLdfm0t5SAbTJUafj-iW0r2URswLCLGhezIIZjPGFK9YZacOMy5clWwo-J2M-JDf0AcECea5HQhGAC80JfZsWgkMqLR7xqO4QmXkIp~6lNOdbZOpLCC0DDI-d9RpQXh6xLP1ALcnRCB6klsk7DlilgLhWqwssJOmgQw5Z6E48L2O7r5eWz-AG9ln6X1lVuJNAAwSb1OEuck5di37iWOj65hJARxtS4ECBVPMvA8eEPhYV5W3r-2kWUzQzKYS1P-hRffp9ZqNSGOb1ibNnSu-mHyguPBbKmXsw2BwTRmpR89BovPgtcWmMMjP5rk-681FhhZfTTDzKyftREA__" alt="Back Image" class="product-image back-image">
+                                
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title translate" data-en="MAGNESIUM & B COMPLEX" data-ar="مغنيسيوم و فيتامين ب المركب">MAGNESIUM & B COMPLEX</h3>
+                            <p class="product-description translate" data-en="Supports your energy production, strengthens the nervous system, and improves your muscle and brain functions." data-ar="يدعم إنتاج الطاقة لديك، ويقوي الجهاز العصبي، ويحسن وظائف العضلات والدماغ.">Supports your energy production, strengthens the nervous system, and improves your muscle and brain functions.</p>
+                            <div class="product-price">$17</div>
+                            <div class="product-action">
+                                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card" data-category="vitamins" data-available="true">
+                    <div class="product-details">
+                        <div class="product-images">
+                            <div class="image-container">
+                                <img src="https://media-hosting.imagekit.io/1286b062cd3143ef/Screenshot%202025-04-10%20214521.png?Expires=1838918731&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=fbzEJvsFQuTkiHrdMWhSCOp3WAOviyIfihvg7mnFGoANkdyCfmB1NHVlcNO8XhCgUxU9d63ZdfspMzbQUeh4MBPP5vQOF39DO7rxpXKUKTxAUqohsGRjsOjmWd6XAg2GrK~B9sLkzCvm1h-3BdCmTqWEa3HMJnVTbxbBrqV9HsalGXaaCCk4Bb0rI6v8rL1w4vRJqch7eYGMtAZLV6jAYHq72kgVvl1I9PImzKU~42cu0EHE-NflpE0jeLCrK9AxAgXo19hJmK0kQ16XjNc0cmM6EOQqQyUsvIcRlAeKOr546HDzoSlwVxCYB9qXS~DUxzoYHuVCa7u16Sn5wpyA3w__" alt="Glucosamine MSM Complex Front" class="product-image front-image">
+                               
+                            </div>
+                            <div class="image-container">
+                                <img src="https://media-hosting.imagekit.io/1e03448806604f0d/Screenshot%202025-04-10%20181724.png?Expires=1838906551&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=IGkDrJUmcchadV1ENERK738uNk1qp90B73ZzV75hmHkdb~T3v2vpJgNEbiuZeUvoZGwzUrrNmnqjOgCKea1LyWAXWXXKaoXyteYn7A9CmcfHA4MD6fHv981hMUB5cWRs1e10XIZuCTXSwg5e09s1~vFUMDb~mT0Emlsb48TWrve6FKMLmLBUFDM7zPnX4gve3q95F37s8v1u~abciKXKuc~csiIVmgqcVg7QIe7dK3CW1vUjhdiA0Mp97Sp5VF5yjTzaS2rJgIr7H6JMNk2c6~BQEupx4oVz1tHXs84ztOF662DAj3xN3tFAGHfXyCAoxmVmyHP7~XDeSw-~ZZRK0A__" alt="Glucosamine MSM Complex Back" class="product-image back-image">
+                             
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title translate" data-en="Glucosamine MSM Complex" data-ar="مركب الجلوكوزامين MSM">Glucosamine MSM Complex</h3>
+                            <p class="product-description translate" data-en="Support your muscle and joint health." data-ar="يدعم صحة العضلات والمفاصل.">Support your muscle and joint health.</p>
+                            <div class="product-price">$13</div>
+                            <div class="product-action">
+                                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!-- Product 3 -->
+<div class="product-card" data-category="vitamins" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/6455b6bd8f444481/Screenshot%202025-04-10%20205732.png?Expires=1838916429&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=jJaZw0buZlkTN6bRvYhCvNwp1y5dGSNKRwvD5OnVgyxCFUkWTjPQZ2qJa328FQcVxgpCdyUOIJaC7woFSXOPkAH9BOkLFL7nYu0pkeLYHrDjEvC1tWCrlnXBEOClmmSTpWJzD6698fJy-h4UV-Qwhn~Wm1qDHhqdP03VarzmIySDSeRXjpL8begX5SyWjfHhf5nhpTx~lLKv6Zp3flgL8X1Tds0B4JCMz45Nhi9ACRqsEl6llOlvga2kTWMQQMqqSp1cx2XRGFEKOW2r-36c5xU9XMUcw4ZPW5ql2aKe1fucv-lqdm4~sJRO5cbB6C4Ji9mmSWJcRMmO-v3pArX6vw__" alt="Maximum B12 Sublingual Front" class="product-image front-image">
+                
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/d633470c490e4de4/Screenshot%202025-04-10%20201231.png?Expires=1838913480&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Aq5d2qJwk~j-1gTlwkTZICnXzTuvNuphbn8mKbY~0X302W6nWG9piN4njXhyyWheL9MgP7ZXE3ScMhJZLrNi-crmQq0ZyPlxm-O2wNimtZTcTjQAt3RnM-C6XTC3hoM0A2JDUaX4yDZNXR7bMORqMinqQ1anqnrUkCLMoNcIzgGKE-VJi8N~saxyP-9g2Wzfo7OK84L1Dfqy4QjO7wZa3HAowuQC7oqkY2DlyF97LoEsbdUTCTHu2OwLptzVUq8psRmAs315XTf-u25KgoVFDmkBp6GAjkeXDeKVfIHNo6xkU8Zya18zi~r8p76r2yLxszPxUz0J4erD6Wjprjzv0Q__" alt="Maximum B12 Sublingual Back" class="product-image back-image">
+                
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Maximum B12 Sublingual" data-ar="ماكسيموم ب12 تحت اللسان">Maximum B12 Sublingual</h3>
+            <p class="product-description translate" data-en="Supports Energy Production, Protects Nervous System Health, Increases Red Blood Cell Production and supports DNA Synthesis." data-ar="يدعم إنتاج الطاقة، ويحمي صحة الجهاز العصبي، ويزيد إنتاج خلايا الدم الحمراء ويدعم تخليق الحمض النووي.">Supports Energy Production, Protects Nervous System Health, Increases Red Blood Cell Production and supports DNA Synthesis.</p>
+            <div class="product-price">$11</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 4 -->
+<div class="product-card" data-category="vitamins" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/e2d59532683e4f22/Screenshot%202025-04-10%20214410.png?Expires=1838918671&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=q7mjVphl5KNwJ1DN5x6tVb4YV-RicP2RXK~fsTqiGsrDdmsL3G9D8IVuLm1pG8pA7w2JOMvDQk-P1RStTnC9t5cyA78Va6UJW4lMyMXLMaFX57UaLNDifwqeEGvmBWYbcKaQGuxH0D42OOraDEBYVwcp9U4edW8wEZoGFNO~SwkskAo~uwGvCnWqUitiP3xUSX40dWGe5HlxBU9uNJ~8WpS5jgWTCrwgWikhS~C1kRnlmn9PBEVR4gXsRuHjC6ocv30S4NfCfsNwlu4ky1s1N2Ad-7006rQugH4prsWzcpsCx--6rxVrUyDNcAyNl-UyGdWwRuyQl3PMM4pxsHFZsQ__" alt="Pure C Citrus Complex Front" class="product-image front-image">
+               
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/b2b1d4b6aabf47d8/Screenshot%202025-04-10%20202348.png?Expires=1838914174&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=wND1KSUoaLJIg8xu2B-CJGBw7t8PDeiZtGc6j1MRWtLnE7B3j1zCsEZvwTm9TzIbefmqijyo7XQC9CJMDTgA2SraCxa4rKzzwwqtXKSVLiCoYa0nWcbjz9z6q6bP2tX15moUVYUFlKQPho7lsbrq-oGlBufk08dBh-z5SGo~g6pVngd1M~TCbSdRVQPidO5PY6mC5n~LrJf1nvW~nIOxuGdiXPSZq56Hvy60NkVqzExzdydy~uySVzU-in-2s1Tcv48T1mEatcM6T1TdKQkL-k4XZormN9p9fygDgokP6D6seWGvv43KLIpYTn6aDWKIzuwJZkFHzC4Uf9WfLoOXgQ__" alt="Pure C Citrus Complex Back" class="product-image back-image">
+                
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Pure C Citrus Complex" data-ar="مجمع فيتامين سي النقي مع الحمضيات">Pure C Citrus Complex</h3>
+            <p class="product-description translate" data-en="Natural extracts for Strengthens the Immune System, Improves Skin Health, Provides Antioxidant Protection, Supports Collagen Production, Reduces Stress and Anxiety." data-ar="مستخلصات طبيعية لتعزيز جهاز المناعة، تحسين صحة الجلد، توفير حماية مضادة للأكسدة، دعم إنتاج الكولاجين، وتقليل التوتر والقلق.">Natural extracts for Strengthens the Immune System, Improves Skin Health, Provides Antioxidant Protection, Supports Collagen Production, Reduces Stress and Anxiety.</p>
+            <div class="product-price">$10</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 5 -->
+<div class="product-card" data-category="vitamins" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/4a896c0bcfe5416f/Screenshot%202025-04-10%20214345.png?Expires=1838918671&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=M5if5yprXY3014DALGWgE6VhjnGOVon2-mJwIzsXHUZ7gH5JAhrUVwwdzRPRazbknE6Y81F2iUkWhBIqXKskJONBLkg5lOGk3tqhGkJ5C3S19~8LDEOWckeElTPyta~feGpsNnNPB6PI5ClcBIXvsl6bs0dtFjs8az5JCYC5mwotmlLl62eoK9hPNotxJ5iT2Ns1FYwY-7i9QoAO0gAJlOoCB6tosU0ciWKUD49CRdgrltqWwlxbFDtobLr5vdIFzCEKu2-iquhbVAxtp3lFzHP9-YPKMMXPIgV0rkWAA0b0Qo1gw7m590C9j-Ca8T9SjyrmotDsh6Olx9NRsZNuYw__" alt="Multivitamin Complex Front" class="product-image front-image">
+                
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/915676194664451e/Screenshot%202025-04-10%20203556.png?Expires=1838914743&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=bBdgw4yB5ad2yNt4aEBSu7dVdbgepy0-pzwQr-p78pQRtdGZFqsi2lckrVfoPHqZSqHqm4LT46ObN1-3zCTNbHqwZfaY-oPj8k~-ae371hgNcvjzdDO2lIu6pWZboPD4CQgQ1KW8amZYEfISy1FXVBc44uNL3sEJJZ0xECag3k9QMAgqM6mnSYFFvbVNrmqCpGd9ag1AhxeI0VEN7Z4JiLbxaT3lON4PLCCliw2paDr5sXdQxk9DhDeCsSzlxwZ3fsxUelQhNXvZd3B2l0kmmn3Sxfaayk~mP5UzVqctjXa9gyEzHNsn7POip4UKGFtXvvwHLAfipN-EmQBBho4p3g__" alt="Multivitamin Complex Back" class="product-image back-image">
+                
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Multivitamin Complex" data-ar="مجمع متعدد الفيتامينات">Multivitamin Complex</h3>
+            <p class="product-description translate" data-en="Antioxidant Protection and Cellular Defense, Energy Boost and Metabolism Support, Heart Health, Immune System Boosting, Bone and Joint Health, Brain Function and Nervous System Support." data-ar="حماية مضادة للأكسدة ودفاع خلوي، دعم لتعزيز الطاقة والتمثيل الغذائي، صحة القلب، تعزيز جهاز المناعة، صحة العظام والمفاصل، وظائف الدماغ ودعم الجهاز العصبي.">Antioxidant Protection and Cellular Defense, Energy Boost and Metabolism Support, Heart Health, Immune System Boosting, Bone and Joint Health, Brain Function and Nervous System Support.</p>
+            <div class="product-price">$12</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 6 -->
+<div class="product-card" data-category="vitamins" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/273a9f182c7f41e6/Screenshot%202025-04-10%20214308.png?Expires=1838918671&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=3KMGuDyCpMI8ZkGeQxehz4Y7eqplyQbtc5PQ-GOVbL2TAv9MxsT41-Q7Df6vDtUh1ZGRA1cgpc7YXaK81jI48LnPURo6WPvuuQVcu-Yc6OOrJNI8bB6XsyS57h51PSFGWGre500Ff8pjC4BluVRy8V2MTJBBLCOvuikuaeWPzl~7GUSfZWHxojoaR6LA2mjCy1nQqvrmj~26ROE7dJ5C0VldbRMV2FNUiJJbPV8NGCTCsUQd8EWB2gms5WcSvSsd1Rg5VKnX0Si0qIQ9RuCybxx23Dfwko03gPqWKm5Rf9oqYu9F1DJg-osuTMb2Z~xmPM4PQG3xIYfVD0MvscA~9Q__" alt="Happy Relax Front" class="product-image front-image">
+                
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/8ed84b35e1d64417/Screenshot%202025-04-10%20204325.png?Expires=1838915318&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=1lBDPhuq7vCRutT1gppwiAl4fMeQ73b5zp-D-OQFHA1IfVfByr9uIxRCTBvo9ombJZo~jCwPfueQKj8VbG~ewxmEZUeb43qcnqqnbHWr5DUoY92u8yXitFyB32qDpcQD8PxsOphdcD7EvHUV6eGGebxQgyTPp7lq9VcZye-h8UwhsZaMKbCbJojRQXL61GZHY3tjWAo8zlcBTCnWL2ue5Xf6z7IpTlFJgKl36ymtpH6lm07DIY5hccPfHFsF7i4Bbl6ZX9-kQdzkPZZOmsEtaFpHce6CdKgBuIOkUjBkg9VsjRz5cmju-pNR5ZlV4cxYoscFcAHax7vcMRmRnKGHJQ__" alt="Happy Relax Back" class="product-image back-image">
+                
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Happy Relax" data-ar="للاسترخاء وتحسين المزاج">Happy Relax</h3>
+            <p class="product-description translate" data-en="Reduces Stress and Anxiety, Improves Sleep Quality, Mood Stabilizing Effect, Increases Serotonin Levels, Supports the Nervous System, Supports Hormone Balance." data-ar="يقلل من التوتر والقلق، يحسن جودة النوم، له تأثير استقرار المزاج، يزيد مستويات السيروتونين، يدعم الجهاز العصبي، ويدعم توازن الهرمونات.">Reduces Stress and Anxiety, Improves Sleep Quality, Mood Stabilizing Effect, Increases Serotonin Levels, Supports the Nervous System, Supports Hormone Balance.</p>
+            <div class="product-price">$16</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 7 -->
+<div class="product-card" data-category="vitamins" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/1e2e6b532e1b458d/Screenshot%202025-04-10%20205635.png?Expires=1838915920&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=JbHcgEQlIOr5VFbBBUkUHsQT4Av76Bm8ySGn0Yx5KbdHmLtCfo-a6rhwhytUTvIvUIz5fZP3kdL3RrzHrLu3cQkbNjkoHGKaFwnfE1f39fWRycwK5hjgG80D9tmS28Viztr01irzsbT0V~~geDO3Zqkx-agNEV9IoAgRcoRCQ5klhJvHr6d1RYDQp2lT38e-imA9JEzvpRAdHQlFuAe3OmXSisDPtqeF6vx1wd9V6xZBb0JFRqGbrFf96Cy2L4IWFUND3ZePX1QdlBWQxMOI1lg9UJ0kZjvREypmOVcsvuJR9~-73UxVI6na4UWiZyRMXuXoeDKRHVnJLKv1dhLjqw__" alt="Defence Plus Front" class="product-image front-image">
+             
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/dea67858e83c43ba/Screenshot%202025-04-10%20205602.png?Expires=1838915920&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=CJ6O6rdPDZccE92QPgb3KzUFbiu2jJFUuq1~fbGIABAG6X5MZsvY0wStrOQnvr-vfoCIMBqlF~a1KHzPN40QeJmmqHBXuEHouzMyHzsCifDE~X4Gymx~t3OjgxoPNFIZoZQF3yZ9khdN6VnVqMm-IEbvEQZt~6ajtfENyyL82FCQqOH8HDkuEsTGPgxPsHAOYmuxGjkFDbAF3QeGrECLGkMdfMpNZFG2IQwaeg0I2lnagiNchrT42Y~Z1dcF9oLVWtYj135nQNMEeTAjUoTTkH8X2MZGInspBtFxk6hGKJvqs3NobKfj~81NlHY3yVNL~cg9Xtlc1r2zgH8ztq0yMg__" alt="Defence Plus Back" class="product-image back-image">
+              
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Defence Plus" data-ar="دفاع مناعي +">Defence Plus</h3>
+            <p class="product-description translate" data-en="Strengthens the Immune System, Supports Energy Production, Improves Cardiovascular Health, Supports Bone and Muscle Health, Improves Brain Functions and Memory, Increases Iron Absorption and Prevents Anemia." data-ar="يعزز جهاز المناعة، يدعم إنتاج الطاقة، يحسن صحة القلب والأوعية الدموية، يدعم صحة العظام والعضلات، يحسن وظائف الدماغ والذاكرة، يزيد من امتصاص الحديد ويمنع فقر الدم.">Strengthens the Immune System, Supports Energy Production, Improves Cardiovascular Health, Supports Bone and Muscle Health, Improves Brain Functions and Memory, Increases Iron Absorption and Prevents Anemia.</p>
+            <div class="product-price">$9</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 8 -->
+<div class="product-card" data-category="vitamins" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/e282ab6de5d64ec4/Screenshot%202025-04-10%20215317.png?Expires=1838919678&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=IkaPGXosKb2BLMg6L~4F4xpWC4UYtovBsFXmND9Vriv2ZvSXoROVaihughfEeEKzN5VOYKD7hY98y8lQ77ZZrjIOj8s6TVWPYyXVDMpqkqMVNM~Ryk5GGHERphsPN1YGC8LfpJH-SrSChJ8IN~R6ypQ5D9yisGIO8oRNjeRyuvbSo8WslvloKsrJXRkV5yxAp9M~ECbFbG27L~PXzB0gAxlhQe429tCWR6DTuweLDWGTvQnYLPOJNxfKidyF070jyauG2Wz3tV6g1MklBs1NljbXOyXMk6o96Yl5GjQkAkiSphSMMyX5vEHvnHI1KAON0wzk~x7z7q5y8qBEUq3g0A__" alt="Omega Focus Front" class="product-image front-image">
+            
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/d4d199c431d24b47/Screenshot%202025-04-10%20215138.png?Expires=1838919678&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=HdS~S1nCqlzMYV5w-okZEqhzOc-dBX6C-2lkRIMo5g2sxBVzaj6qQGKda0dTJ-mtD1GBfzCvNPLlneRueTy7liLpNtaL25KHtJgXqHli5Lu5bEl5nPG-LMMQ~aaUcds3fy-0TEp5H7bVMbusqEjjVXwoCjuiGx-nEGpBXnWj5QVRzdvzlcGZz6AgQAzh~cOFcE~Qldw9efaOAeC4MT3v3B7OcbeJpa1it~xfQsP1kBdE~-0PeyjY7NaYq46mYHcXddFreJwe4qxTP4EyS9yFg8bJ0S0O9iBjwWjjEBZ5oUH7gQvHTqEwS5JrjTzNdZVupWug35pOf99IdReOfO9DOw__" alt="Omega Focus Back" class="product-image back-image">
+             
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Omega Focus" data-ar="زيادة التركيز مع زيت السمك +">Omega Focus</h3>
+            <p class="product-description translate" data-en="FOCUS ON YOUR MENTAL HEALTH, our product Supports Brain Functions, Supports Energy and Metabolism, Protects Cardiovascular Health, Supports Mental Health, Improves Nervous System Health, Improves Memory and Concentration, Supports Cognitive Functions." data-ar="ركز على صحتك العقلية، منتجنا يدعم وظائف الدماغ، يدعم الطاقة والتمثيل الغذائي، يحمي صحة القلب والأوعية الدموية، يدعم الصحة النفسية، يحسن صحة الجهاز العصبي، يحسن الذاكرة والتركيز، ويدعم الوظائف الإدراكية.">FOCUS ON YOUR MENTAL HEALTH, our product Supports Brain Functions, Supports Energy and Metabolism, Protects Cardiovascular Health, Supports Mental Health, Improves Nervous System Health, Improves Memory and Concentration, Supports Cognitive Functions.</p>
+            <div class="product-price">$17</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 9 -->
+<div class="product-card" data-category="vitamins" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/981d3b8f88c84c85/Screenshot%202025-04-10%20220608.png?Expires=1838919980&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=wALojiGyolb7UksnSxRPTQ~4emqV5nV7JpOLs~htCsPmSuVwtosq98~TJGDBRGRIm6Dgs3Ha6CDzh3UBaKZN8e2d-PglzT~eyx0Lq24-tebZZc9VWkJFbm2TlFChUCWR6jc2j8-9MDryDiTw8oaCYng9BVJNy6XYoA50IIK~xNXUx3HzInHgl2nUpn5HCrauKmKHpX5SOKu3HdSiCk7qtEToSAY-lIeKyUZESm41ZlFfsdIwhzOda~ZdiG4VrPuDtCY2hpdIRX4I3TNqhFbeYp5qb3rjMBKca0~CkhIxlYuj5nOU3F7HK3ocmA1VXxyaB-tV6laG3I~Sf4eCCAUc2Q__" alt="Clevﬁsh Omega Ultra Front" class="product-image front-image">
+                
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/4595cc53dd564f24/Screenshot%202025-04-10%20220538.png?Expires=1838919980&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=DMmzq26fWl0dME2sCNtCyOxf6S079Mm56VhEVsFucdBUfO79RvBcEkN6I-eChTt25X8gNwzkvKfEO0JqJ~zLqR8Xa7pOBMTnFs-njEL5gB7PoNutFwn4roq5l9xoWSriVdkUVbwFu2KYFIxewDjp-rgjsgel8v74Sy4CbfvDx1gnjmTKd5NcsqWyybb8OgWJldP3wiptAE7zCBNylAxub0thTa0PSrSOP9Y9p1O8ZSsTgvrRYSzfdKN0SZTyYISaym3g168523kn4tCXP4-sQHe5uPSEZteTCrEHVvJ72VVDcOGmwUKwaBmj-PWXPQfg29Qsg~aOkoEaZ3--e0svdw__" alt="Clevﬁsh Omega Ultra Back" class="product-image back-image">
+              
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Clevﬁsh Omega Ultra" data-ar="زيت السمك الترا">Clevﬁsh Omega Ultra</h3>
+            <p class="product-description translate" data-en="HIGH QUALITY ULTRA OMEGA-3 SUPPORT. Supports Heart Health, Improves Brain Functions and Mood, Protects Eye Health, Reduces Inﬂammation, Prevents Cognitive Decline, Improves Skin Health, Supports Bone and Joint Health, Supports Pregnancy and Infant Development." data-ar="دعم عالي الجودة لأوميغا-3 فائق. يدعم صحة القلب، يحسن وظائف الدماغ والمزاج، يحمي صحة العيون، يقلل الالتهابات، يمنع التدهور المعرفي، يحسن صحة البشرة، يدعم صحة العظام والمفاصل، ويدعم الحمل وتطور الرضع.">HIGH QUALITY ULTRA OMEGA-3 SUPPORT. Supports Heart Health, Improves Brain Functions and Mood, Protects Eye Health, Reduces Inﬂammation, Prevents Cognitive Decline, Improves Skin Health, Supports Bone and Joint Health, Supports Pregnancy and Infant Development.</p>
+            <div class="product-price">$13</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 10 -->
+<div class="product-card" data-category="cosmetics" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/34c58c533a8d4aa7/Screenshot%202025-04-10%20221406.png?Expires=1838920485&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=jWcUO2jKat9z-HYaeDLMJHXhEabQoVa0Gc5YNAQwooJaumsGPadedOv8OVH5FFNaXRVzChhX59gOxTJ~xGMXypIBanUfiqIgIbN~tenI~MQVE5IRb1YqDWf019lum02d1nxBWU~BBbB7vVY7T4GDtoWtd0~rwZqCdsHCQ6mmOLxbOlMfcYcIYtSwerQSMi0UujMx5KniXElqtk~pd-W6VbSZkkY0QohNeZMN9C~2a70-J3s3rPHYsBVC~~~usBmWwI~4sQuZ8hX5o~AZFK3yB81gfIx54m932s9MohEjo3QRjCmVOK~3aZcOMomPscJ6bCZTE9y8Ae7VB5X5MB~zDQ__" alt="D-Tox Front" class="product-image front-image">
+              
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/3578b3dcbd344da9/Screenshot%202025-04-10%20221431.png?Expires=1838920485&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=lxn6euDI3cxcVSccXvkEBKT~uDZd8UAyHRsxBgRwz3mRuASCqLo4n9U2VgW78-8c8gbS~yMNEBTTuM-hMoSAflUzXGXQ7wiZb5NwatEmNTE8B4jmYuRrcqoFPISlxOVeh0yYJI7DM3jpdYfRHs5rPZIOeYw44H2B4fn2waXUE6GFfrB1bDzMARwQHkmr1x4WORPrHso88utK4zHZ2w6RN5Bo4fTCRuLyAM2bxVGhYfPZnGE8~-yR6ItMOR8rABn49Qq~DWYcQajZ74etgKQXT7VhyzO-WBh2asTxaDJ2yo7stbSy~SCt7QUrkkLdL13FxyML4Vj~DMMzmHRQoH8saw__" alt="D-Tox Back" class="product-image back-image">
+                
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="D-Tox" data-ar="دي-توكس حارق الدهون">D-Tox</h3>
+            <p class="product-description translate" data-en="Accelerates Metabolism and Supports Fat Burning, Supports Digestion and Intestinal Health. Increases Energy Levels, It has a satiating effect, Improves Muscle Functions, Provides Antioxidant Protection, Increases Insulin Sensitivity and Stabilizes Blood Sugar, Reduces Inﬂammation, Supports Fat Loss with Thermogenic Effect." data-ar="يُسرّع عملية الأيض ويدعم حرق الدهون، يدعم الهضم والصحة المعوية. يزيد مستويات الطاقة، له تأثير مُشبع، يحسن وظائف العضلات، يوفر حماية مضادة للأكسدة، يزيد من حساسية الإنسولين ويُثبّت مستوى السكر في الدم، يقلل الالتهابات، يدعم فقدان الدهون بتأثيره الحراري.">Accelerates Metabolism and Supports Fat Burning, Supports Digestion and Intestinal Health. Increases Energy Levels, It has a satiating effect, Improves Muscle Functions, Provides Antioxidant Protection, Increases Insulin Sensitivity and Stabilizes Blood Sugar, Reduces Inﬂammation, Supports Fat Loss with Thermogenic Effect.</p>
+            <div class="product-price">$14</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 11 -->
+<div class="product-card" data-category="cosmetics" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/831fde9f43c34257/Screenshot%202025-04-10%20222352.png?Expires=1838921048&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=iiW5-v9gjrmA780~cNYc03nhIdHP4QBxTyNrVRV3uu5rUVsVxM0rHaV-nQpKHJTMm4cneF~IwsBQZZYqtAcg-UW-NhPzGCrpuBkW746lBoWf~r7ucAsPbWy~BMBgl-YbPpk3p4ogY2rij~2ULSRpoN0Oo5saMgZokxeGb7WEA~ZSb9KCog0Uho9WSNlqKUY1GsGVuTGRrQAgAXxrH4Bqi~nc0gx0vdGFVnRwrUIB73Y~Ga6XKMWK~cgoPvt21X0-ccdLprGpC2nGvwIXhf4YGveZFygRST5vb28HXc6yTP-XpdGRQGjPUpFfjGyrdgy6uQwPPj1F1MxX9XSsFT431g__" alt="Hair Skin Nails Front" class="product-image front-image">
+                
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/b2b225e463284101/Screenshot%202025-04-10%20222452.png?Expires=1838921108&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=IHQz7B09fnAetZzMort8h~VlWw9b9zBHST8GCrj5~pneuXoT433Eov5zRBsmxmfbLkMcKS88VaWFJs~6wFnZ4TWKd8Sp8OtDRht0GA2L~79rG3RgOKCrl~yKmduL3AVmJXGjw~~tR6YElIF~YQ4wpsiRQP6Fd5P5betAa9XciUIluI9wEsN5tt4ib-FNVduoS1D~FcGBsUZpXbOrSfDKICnlGYbg0VNDmGK7Ypx6kJUw1Id19BJ1yioZlrQYm5CQPFYtg8H70xWupkJTSASFaI2gRtCT~Lt6jZ5daoqe0u2p9yYF~c9x5ia7e83MWp2CvHKKIclQmlpWw2f747rjuQ__" alt="Hair Skin Nails Back" class="product-image back-image">
+                
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Hair Skin Nails" data-ar="تقوية للشعر والبشرة والاظافر">Hair Skin Nails</h3>
+            <p class="product-description translate" data-en="THE SECRET OF STRONG, FIRM AND DURABLE BEAUTY. Supports Hair, Skin and Nail Health, Type 1 and type 3 collagen help keep the skin ﬁrm and elastic, Collagen contributes to hair and nail growth, Zinc and keratin reduce hair loss and nail breakage, Reduces ﬁne lines and wrinkles and improves skin plumpness, Increases skin elasticity, helps to reduce blemishes." data-ar="سر القوة والثبات والجمال الدائم. يدعم صحة الشعر والبشرة والأظافر، الكولاجين من النوع الأول والثالث يساعد في الحفاظ على ثبات البشرة ومرونتها، الكولاجين يساهم في نمو الشعر والأظافر، الزنك والкерاتين يقللان تساقط الشعر وكسر الأظافر، يقلل الخطوط الدقيقة والتجاعيد ويحسن امتلاء البشرة، يزيد مرونة الجلد ويساعد في تقليل البقع.">THE SECRET OF STRONG, FIRM AND DURABLE BEAUTY. Supports Hair, Skin and Nail Health, Type 1 and type 3 collagen help keep the skin ﬁrm and elastic, Collagen contributes to hair and nail growth, Zinc and keratin reduce hair loss and nail breakage, Reduces ﬁne lines and wrinkles and improves skin plumpness, Increases skin elasticity, helps to reduce blemishes.</p>
+            <div class="product-price">$15</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 12 -->
+<div class="product-card" data-category="cosmetics" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/499e21b665324bef/Screenshot%202025-04-10%20223409.png?Expires=1838921686&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dweuF~lQk6CuCOw48DP1RgpaX4A8dhuOAIeOI0F9tIubl6fK8KvrA-j~FrIgb1WLykaU68T5ZAbAsQtRqQ0qGBkmCpg046J6ElDBIAMbXo7CcsQq3a~ggqKA5v48QwHAHA5nCDTJZwqvWgwLrwRj5s9XBPi0ppq94X7MpCC-V2KA9stB2~wLfFXDzZLsB~KUiAV0vD0gV2k9523OmeQG-ked3xdFmZT-vzWTZZ5--w4XVhBoY1TyIu~4P5QPavdqVRrX9kv5EQhnvrAiYtsYREDvdfW4JFQHPn3526XmayU9u0gyY0pDpiRzAVhFj5AaYdxHgTkSBj6zZfEV8NubQA__" alt="Netfit Beauty Collagen Front" class="product-image front-image">
+                
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/62daa8457589489a/Screenshot%202025-04-10%20223202.png?Expires=1838921686&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=WzDhqpoBena2gsLf-6iN5Wb3ps7KALrzzzZdJevV8EfLyHGVs9F5Y5deT-wc7LJUPIBMNTAKfR4DXYkhUo7kLk7sn9Z8gh-rMSO8FcArTwt22OPpJOPeLguIoYLzkpJ6OIzFZCi9nnbuCecpaNRqCepy1C1U0Vyq9kKpHtpASHdlX2zBsi9e0WghBwDv~YsS4mWnygmvZLKR9FF6SRTRXEm3Jljp~dNQmRdWZSSx2pX22OUsav3k9~MWZLM~0rJt~39ewq1cl1EFKgGLzjSGMdp9gp6tOy1YviMmI29xgMUg50HHxUd6VAov2LKFjCKtJY97j1F-vxtA72efgsBilw__" alt="Netfit Beauty Collagen Back" class="product-image back-image">
+                
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Netfit Beauty Collagen" data-ar="إكسير الجمال مع الكولاجين (30 كيس صغير)">Netfit Beauty Collagen</h3>
+            <p class="product-description translate" data-en="EXPERIENCE THE YOUTHFUL GLOW. Contains Collagen and Hyaluronic Acid and is Fortified with vitamins, Supports Skin Health, Supports Joint Health, Provides Antioxidant Protection, Supports Metabolism, Strengthens the Immune System, Supports the Digestive System, Supports Bone Health, Provides Anti-inflammatory Effect, Supports Energy and Mood, Management, Improves Hair, Skin and Nail Health, Glucomannan swells in the stomach and provides a feeling of satiety for a long time." data-ar="استمتعي بمظهر الشباب المشرق. يحتوي على الكولاجين وحمض الهيالورونيك ومدعم بالفيتامينات، يدعم صحة البشرة، يدعم صحة المفاصل، يوفر حماية مضادة للأكسدة، يدعم التمثيل الغذائي، يقوي الجهاز المناعي، يدعم الجهاز الهضمي، يدعم صحة العظام، يوفر تأثيرًا مضادًا للالتهابات، يدعم الطاقة والمزاج، يحسن صحة الشعر والبشرة والأظافر، الغلوكمانان يتورم في المعدة ويمنحك شعورًا بالشبع لفترة طويلة.">EXPERIENCE THE YOUTHFUL GLOW. Contains Collagen and Hyaluronic Acid and is Fortified with vitamins, Supports Skin Health, Supports Joint Health, Provides Antioxidant Protection, Supports Metabolism, Strengthens the Immune System, Supports the Digestive System, Supports Bone Health, Provides Anti-inflammatory Effect, Supports Energy and Mood, Management, Improves Hair, Skin and Nail Health, Glucomannan swells in the stomach and provides a feeling of satiety for a long time.</p>
+            <div class="product-price">$25</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product 13 -->
+<div class="product-card" data-category="cosmetics" data-available="true">
+    <div class="product-details">
+        <div class="product-images">
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/534c11232eb14cbd/Screenshot%202025-04-10%20224832.png?Expires=1838922537&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=cze14i5ugKv5Df~XO7aoGxDhq82oGwFmxmjaxdkDK00hqT1fJzZswnoOkXfTIY~7AFOWJqOzrWny-o5ZnxJTC0KnArTiVqt7JT1kuunFISFLcP8ByZwWF6TbeAYrkwYCWLSp9KEdi7053jrAC4wqZ22SDf3W8kGKQSoh~wRNt1CX6JEo1iHMP5bZXdYUUExyFg--ByN37y4Afr5nlCn9zfAdCSF46Y3ejuJuU7vmLEI~e~JAUTmZ9NDJHBJLb2KEvncFB7kZJUThvYqw2y~1TWcUIDUw1C5H3dxueVDJdnQ7Nf~WOaIFfIfDWq74iA5GAfZdxaKyfZzOj4sGibCTzw__" alt="Netfit Beauty Collagen Front" class="product-image front-image">
+               
+            </div>
+            <div class="image-container">
+                <img src="https://media-hosting.imagekit.io/8650553174824d80/Screenshot%202025-04-10%20224748.png?Expires=1838922537&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=R7-WT2Bm62WgmpgoLGQcqzWu6~S8L70Ii~jFEncOXX8WUIIKXE7kHU6h--AJnr0JaARtUzNKKdGclDsmqKpG0K2sB33~yUIC7KyG1eK0KMGET3Lm811foRbHB6NeHooGl5CWJxJfLzpVb5eq7BP3sHowwbwfqH0kWi0hNDI8WIRmU1niKGCtaZ0fDIXYtYBJpf7os9S8TBb3mGEuKBY-aomV8D6CmMfXbehLRZmbxUUaur-eSD5v5Ui7nDg4TFQg2ATbSpl-PU~zCWhhQbzyVk0UfLqCODqERtkuo3Lj09HUEqLICkoVR7sXgOucoiw7prSoeL9pxpS703gJr80ybg__" alt="Netfit Beauty Collagen Back" class="product-image back-image">
+               
+            </div>
+        </div>
+        <div class="product-info">
+            <h3 class="product-title translate" data-en="Netfit Beauty Collagen 378g / 30 Scale" data-ar="إكسير الجمال مع الكولاجين (378 غرام / 30 ملعقة)">Netfit Beauty Collagen 378g / 30 Scale</h3>
+            <p class="product-description translate" data-en="EXPERIENCE THE YOUTHFUL GLOW. Contains Collagen and Hyaluronic Acid and is Fortified with vitamins, Supports Skin Health, Supports Joint Health, Provides Antioxidant Protection, Supports Metabolism, Strengthens the Immune System, Supports the Digestive System, Supports Bone Health, Provides Anti-inflammatory Effect, Supports Energy and Mood, Management, Improves Hair, Skin and Nail Health, Glucomannan swells in the stomach and provides a feeling of satiety for a long time." data-ar="استمتعي بمظهر الشباب المشرق. يحتوي على الكولاجين وحمض الهيالورونيك ومدعم بالفيتامينات، يدعم صحة البشرة، يدعم صحة المفاصل، يوفر حماية مضادة للأكسدة، يدعم التمثيل الغذائي، يقوي الجهاز المناعي، يدعم الجهاز الهضمي، يدعم صحة العظام، يوفر تأثيرًا مضادًا للالتهابات، يدعم الطاقة والمزاج، يحسن صحة الشعر والبشرة والأظافر، الغلوكمانان يتورم في المعدة ويمنحك شعورًا بالشبع لفترة طويلة.">EXPERIENCE THE YOUTHFUL GLOW. Contains Collagen and Hyaluronic Acid and is Fortified with vitamins, Supports Skin Health, Supports Joint Health, Provides Antioxidant Protection, Supports Metabolism, Strengthens the Immune System, Supports the Digestive System, Supports Bone Health, Provides Anti-inflammatory Effect, Supports Energy and Mood, Management, Improves Hair, Skin and Nail Health, Glucomannan swells in the stomach and provides a feeling of satiety for a long time.</p>
+            <div class="product-price">$20</div>
+            <div class="product-action">
+                <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" class="btn translate" data-en="Buy Now" data-ar="اشتري الآن">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ZenoAura</h3>
+                    <p class="translate" data-en="Premium vitamins and cosmetics for your health and beauty needs." data-ar="فيتامينات ومستحضرات تجميل مميزة لاحتياجات الصحة والجمال الخاصة بك.">Premium vitamins and cosmetics for your health and beauty needs.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="translate" data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" class="translate" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="#products" class="translate" data-en="Products" data-ar="المنتجات">Products</a></li>
+                        <li><a href="#about" class="translate" data-en="About Us" data-ar="من نحن">About Us</a></li>
+                        <li><a href="#contact" class="translate" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="translate" data-en="Follow Us" data-ar="تابعنا">Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" title="Facebook"><i>f</i></a>
+                        <a href="https://www.instagram.com/stormvitals_lb?fbclid=IwY2xjawJkPXZleHRuA2FlbQIxMAABHll3W3Lkw2ThhIrT877GGQu5OINU4JLWHo_d2m463YUe-W4FyUpVGMxhCz7X_aem_NhoQ3FewkIeqyQM4UULZpw" target="_blank" title="Instagram"><i>ig</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="translate" data-en="© 2025 ZenoAura. All rights reserved." data-ar="© 2025 زينوأورا. جميع الحقوق محفوظة.">&copy; 2025 ZenoAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Lightbox Container -->
+    <div id="lightbox" class="lightbox">
+        <span id="close-lightbox">&times;</span>
+        <img id="lightbox-image" src="" alt="Enlarged Product Image">
+    </div>
+    <script>
+        // Function to filter products by category
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product-card');
+            const tabs = document.querySelectorAll('.tab');
+            // Update active tab
+            tabs.forEach(tab => {
+                if (tab.textContent.toLowerCase().includes(category) || 
+                   (category === 'all' && tab.textContent.toLowerCase().includes('all'))) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            products.forEach(product => {
+                const productCategory = product.getAttribute('data-category');
+                const isAvailable = product.getAttribute('data-available') === 'true';
+                // First check if product is available
+                if (!isAvailable) {
+                    product.style.display = 'none';
+                    return;
+                }
+                // Then filter by category
+                if (category === 'all' || productCategory === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+        // Function to toggle product availability
+        function toggleProductAvailability(productId, isAvailable) {
+            const product = document.getElementById(productId);
+            if (product) {
+                product.setAttribute('data-available', isAvailable);
+                // Refresh the current filter
+                const activeTab = document.querySelector('.tab.active');
+                if (activeTab) {
+                    const category = activeTab.textContent.toLowerCase().replace('all products', 'all')
+                        .replace('كل المنتجات', 'all');
+                    filterProducts(category);
+                }
+            }
+        }
+        // Language switcher functionality
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('.translate');
+            const langButtons = document.querySelectorAll('.language-switcher button');
+            // Update active language button
+            langButtons.forEach(button => {
+                if (button.textContent === 'EN' && lang === 'en' || 
+                    button.textContent === 'عربي' && lang === 'ar') {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+            // Set the document direction
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', lang);
+            // Update all translatable elements
+            elements.forEach(element => {
+                if (element.getAttribute(`data-${lang}`)) {
+                    element.textContent = element.getAttribute(`data-${lang}`);
+                }
+            });
+        }
+        // Initialize with the "all" filter
+        document.addEventListener('DOMContentLoaded', function() {
+            filterProducts('all');
+            // Lightbox Functionality
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const closeLightbox = document.getElementById('close-lightbox');
+            // Open Lightbox when an image is clicked
+            document.querySelectorAll('.product-image').forEach(image => {
+                image.addEventListener('click', function () {
+                    lightbox.style.display = 'flex';
+                    lightboxImage.src = this.src; // Set the clicked image as the lightbox image
+                });
+            });
+            // Close Lightbox when the close button is clicked
+            closeLightbox.addEventListener('click', function () {
+                lightbox.style.display = 'none';
+            });
+            // Close Lightbox when clicking outside the image
+            lightbox.addEventListener('click', function (event) {
+                if (event.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
