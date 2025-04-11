@@ -257,23 +257,34 @@ min-height: 500px;
             color: #666;
         }
         /* Language Switcher */
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            margin-left: 20px;
-        }
-        .language-switcher button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            margin: 0 5px;
-            font-weight: 500;
-        }
-        .language-switcher button.active {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-        }
+       .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: center; /* Center align the logo and language switcher */
+}
+
+.language-switcher {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center;
+    margin-top: 10px; /* Add space between the logo and the language switcher */
+}
+
+.language-switcher button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-weight: 500;
+    font-size: 14px; /* Slightly smaller font size for the buttons */
+}
+
+.language-switcher button.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
         /* RTL Support */
         [dir="rtl"] nav ul li {
             margin-right: 20px;
@@ -315,24 +326,27 @@ min-height: 500px;
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="top-bar">
-                <div class="logo">ZenoAura</div>
-                <nav>
-                    <ul>
-                        <li><a href="#home" class="nav-link translate" data-en="Home" data-ar="الرئيسية">Home</a></li>
-                        <li><a href="#products" class="nav-link translate" data-en="Products" data-ar="المنتجات">Products</a></li>
-                        <li><a href="#about" class="nav-link translate" data-en="About Us" data-ar="من نحن">About Us</a></li>
-                        <li><a href="#contact" class="nav-link translate" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
-                    </ul>
-                </nav>
+    <div class="container">
+        <div class="top-bar">
+            <div class="logo">
+                ZenoAura
+                <!-- Language Switcher Moved Here -->
                 <div class="language-switcher">
                     <button onclick="changeLanguage('en')" class="active">EN</button>
                     <button onclick="changeLanguage('ar')">عربي</button>
                 </div>
             </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link translate" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="#products" class="nav-link translate" data-en="Products" data-ar="المنتجات">Products</a></li>
+                    <li><a href="#about" class="nav-link translate" data-en="About Us" data-ar="من نحن">About Us</a></li>
+                    <li><a href="#contact" class="nav-link translate" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </header>
+    </div>
+</header>
     <section class="hero" id="home" style="background-image: url('https://media-hosting.imagekit.io/20c83ea095f94deb/photo_2025-04-11_10-03-56.jpg?Expires=1838963057&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=W5QgwUGhS665GdgJr2dXxrI-VOT8OmRXjjI03-Y261Q4LBV6afTpm5Dl5K9qoT1m~dbAXDGEa~CKyjYY4KuY1qCvnplmmHJ86E1o37UPefrZUPY6lhqFmw8X1nK7Ge0lCzYYfMeMcJP7RUPAVp2jdK~fOC~vkV75zjapKkBKv1fVUzLlgeeA~4ostPLOS09RD7UeMXZ13FbVGZLsXAsbN6QAdJffLf84sypioAIW0JiyDs51kvP6Qvl0o9GKCkr9kJG43tXK9wroreh5VnV4YuAQSUXNrSl2tuYe0b3buQTluQAAuWsBdVJPhSf17D36lAwytCwmvODXsXNvNhqY-w__');">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
@@ -604,7 +618,7 @@ min-height: 500px;
     </div>
 </div>
 <!-- Product 12 -->
-<div class="product-card" data-category="cosmetics" data-available="true">
+<div class="product-card" data-category="cosmetics" data-available="none">
     <div class="product-details">
         <div class="product-images">
             <div class="image-container">
@@ -672,7 +686,7 @@ min-height: 500px;
                     <h3 class="translate" data-en="Follow Us" data-ar="تابعنا">Follow Us</h3>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/profile.php?id=61573043228785" target="_blank" title="Facebook"><i>f</i></a>
-                        <a href="https://www.instagram.com/zenoaura_lb/" target="_blank" title="Instagram"><i>ig</i></a>
+                        <a href="https://www.instagram.com/zenoaura_lb" target="_blank" title="Instagram"><i>ig</i></a>
                     </div>
                 </div>
             </div>
@@ -687,97 +701,145 @@ min-height: 500px;
         <img id="lightbox-image" src="" alt="Enlarged Product Image">
     </div>
     <script>
-        // Function to filter products by category
-        function filterProducts(category) {
-            const products = document.querySelectorAll('.product-card');
-            const tabs = document.querySelectorAll('.tab');
-            // Update active tab
-            tabs.forEach(tab => {
-                if (tab.textContent.toLowerCase().includes(category) || 
-                   (category === 'all' && tab.textContent.toLowerCase().includes('all'))) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-            products.forEach(product => {
-                const productCategory = product.getAttribute('data-category');
-                const isAvailable = product.getAttribute('data-available') === 'true';
-                // First check if product is available
-                if (!isAvailable) {
-                    product.style.display = 'none';
-                    return;
-                }
-                // Then filter by category
-                if (category === 'all' || productCategory === category) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
+      // Function to filter products by category
+function filterProducts(category) {
+    const products = document.querySelectorAll('.product-card');
+    const tabs = document.querySelectorAll('.tab');
+
+    // Normalize the category name to match expected values
+    const normalizedCategory = normalizeCategory(category);
+
+    // Update active tab
+    tabs.forEach(tab => {
+        const tabCategory = normalizeCategory(tab.textContent.toLowerCase());
+        if (tabCategory === normalizedCategory) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
         }
-        // Function to toggle product availability
-        function toggleProductAvailability(productId, isAvailable) {
-            const product = document.getElementById(productId);
-            if (product) {
-                product.setAttribute('data-available', isAvailable);
-                // Refresh the current filter
-                const activeTab = document.querySelector('.tab.active');
-                if (activeTab) {
-                    const category = activeTab.textContent.toLowerCase().replace('all products', 'all')
-                        .replace('كل المنتجات', 'all');
-                    filterProducts(category);
-                }
-            }
+    });
+
+    // Filter products based on category and availability
+    products.forEach(product => {
+        const productCategory = product.getAttribute('data-category');
+        const availability = product.getAttribute('data-available');
+
+        // First check if product matches the category
+        if (normalizedCategory === 'all' || productCategory === normalizedCategory) {
+            product.style.display = 'block';
+
+            // Update the "Buy Now" button based on availability
+            updateButtonState(product, availability);
+        } else {
+            product.style.display = 'none';
         }
-        // Language switcher functionality
-        function changeLanguage(lang) {
-            const elements = document.querySelectorAll('.translate');
-            const langButtons = document.querySelectorAll('.language-switcher button');
-            // Update active language button
-            langButtons.forEach(button => {
-                if (button.textContent === 'EN' && lang === 'en' || 
-                    button.textContent === 'عربي' && lang === 'ar') {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-            });
-            // Set the document direction
-            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            document.documentElement.setAttribute('lang', lang);
-            // Update all translatable elements
-            elements.forEach(element => {
-                if (element.getAttribute(`data-${lang}`)) {
-                    element.textContent = element.getAttribute(`data-${lang}`);
-                }
-            });
+    });
+}
+
+// Helper function to normalize category names
+function normalizeCategory(category) {
+    return category
+        .toLowerCase()
+        .replace('all products', 'all')
+        .replace('كل المنتجات', 'all')
+        .replace('vitamins', 'vitamins')
+        .replace('فيتامينات', 'vitamins')
+        .replace('cosmetics', 'cosmetics')
+        .replace('مستحضرات تجميل', 'cosmetics');
+}
+
+// Helper function to update button text and state
+function updateButtonState(product, availability) {
+    const buyNowButton = product.querySelector('.btn.translate');
+    const lang = document.documentElement.lang;
+
+    if (buyNowButton) {
+        if (availability === 'none') {
+            // Update button text for English and Arabic
+            buyNowButton.textContent = lang === 'ar' 
+                ? 'نفدت من المخزون حاليا' 
+                : 'Out of Stock';
+            // Make the button unclickable
+            buyNowButton.removeAttribute('href');
+            buyNowButton.style.pointerEvents = 'none';
+            buyNowButton.style.backgroundColor = '#ccc'; // Gray out the button
+            buyNowButton.style.color = '#666'; // Change text color
+        } else {
+            // Reset to "Buy Now" if available
+            buyNowButton.textContent = lang === 'ar' 
+                ? 'اشتري الآن' 
+                : 'Buy Now';
+            buyNowButton.setAttribute('href', 'https://www.facebook.com/profile.php?id=61573043228785');
+            buyNowButton.style.pointerEvents = 'auto';
+            buyNowButton.style.backgroundColor = ''; // Reset styles
+            buyNowButton.style.color = ''; // Reset text color
         }
-        // Initialize with the "all" filter
-        document.addEventListener('DOMContentLoaded', function() {
-            filterProducts('all');
-            // Lightbox Functionality
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightbox-image');
-            const closeLightbox = document.getElementById('close-lightbox');
-            // Open Lightbox when an image is clicked
-            document.querySelectorAll('.product-image').forEach(image => {
-                image.addEventListener('click', function () {
-                    lightbox.style.display = 'flex';
-                    lightboxImage.src = this.src; // Set the clicked image as the lightbox image
-                });
-            });
-            // Close Lightbox when the close button is clicked
-            closeLightbox.addEventListener('click', function () {
-                lightbox.style.display = 'none';
-            });
-            // Close Lightbox when clicking outside the image
-            lightbox.addEventListener('click', function (event) {
-                if (event.target === lightbox) {
-                    lightbox.style.display = 'none';
-                }
-            });
+    }
+}
+
+// Language switcher functionality
+function changeLanguage(lang) {
+    const elements = document.querySelectorAll('.translate');
+    const langButtons = document.querySelectorAll('.language-switcher button');
+
+    // Update active language button
+    langButtons.forEach(button => {
+        if (button.textContent === 'EN' && lang === 'en' || 
+            button.textContent === 'عربي' && lang === 'ar') {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
+
+    // Set the document direction
+    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', lang);
+
+    // Update all translatable elements
+    elements.forEach(element => {
+        if (element.getAttribute(`data-${lang}`)) {
+            element.textContent = element.getAttribute(`data-${lang}`);
+        }
+    });
+
+    // Reapply the product filtering logic to the currently active tab
+    const activeTab = document.querySelector('.tab.active');
+    if (activeTab) {
+        const category = normalizeCategory(activeTab.textContent.toLowerCase());
+        filterProducts(category);
+    }
+}
+
+// Initialize with the "all" filter
+document.addEventListener('DOMContentLoaded', function() {
+    filterProducts('all');
+
+    // Lightbox Functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeLightbox = document.getElementById('close-lightbox');
+
+    // Open Lightbox when an image is clicked
+    document.querySelectorAll('.product-image').forEach(image => {
+        image.addEventListener('click', function () {
+            lightbox.style.display = 'flex';
+            lightboxImage.src = this.src; // Set the clicked image as the lightbox image
         });
+    });
+
+    // Close Lightbox when the close button is clicked
+    closeLightbox.addEventListener('click', function () {
+        lightbox.style.display = 'none';
+    });
+
+    // Close Lightbox when clicking outside the image
+    lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) {
+            lightbox.style.display = 'none';
+        }
+    });
+});
     </script>
 </body>
 </html>
